@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/signIn_signUP.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/NavBar.css" />
+    <link rel="stylesheet" href="/css/font.css">
+  </head>
+  <body>
+    <nav class="NavBar">
+      <ul>
+        <li><img src="/img/Reserify.png" alt="Logo" /></li>
+        <li><a href="/html/HomePage.html">Home</a></li>
+        <li class="login-signup">
+          <a href="/html/login_signUp.html">Login / Sign Up</a>
+          <script src="/Js/navbar.js"></script>
+        </li>
+      </ul>
+    </nav>
+
+
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Signup</header>
+        <form action="#" id="registerForm">
+          <input
+            type="text"
+            id="register_firstname"
+            placeholder="Frist name"
+            required
+          />
+          <input
+            type="text"
+            id="register_lastname"
+            placeholder="Last name"
+            required
+          />
+          <input
+            type="email"
+            id="register_email"
+            placeholder="Email address"
+            required
+          />
+          <input
+            type="tel"
+            id="register_phone"
+            placeholder="Phone Number"
+            required
+          />
+          <input
+            type="password"
+            id="register_password"
+            placeholder="Password"
+            required
+          />
+          <div class="checkbox">
+            <input type="checkbox" id="signupCheck" />
+            <label for="signupCheck">I accept all terms & conditions</label>
+          </div>
+          <input type="submit" value="Signup" />
+        </form>
+      </div>
+      <div class="form login">
+        <header>Login</header>
+        <form id="loginForm">
+          <input
+            type="text"
+            id="sign_email"
+            placeholder="Email address"
+            required
+          />
+          <input
+            type="password"
+            id="sign_password"
+            placeholder="Password"
+            required
+          />
+          <a href="#">Forgot password?</a>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+      <footer>
+        <a href="https://discord.com/">Discord</a>
+        <a href="https://twitter.com/">Twitter</a>
+        <a href="https://www.linkedin.com/">LinkedIn</a>
+        <a href="https://www.instagram.com/">Instagram</a>
+      </footer>
+      <script>
+        const wrapper = document.querySelector(".wrapper"),
+          signupHeader = document.querySelector(".signup header"),
+          loginHeader = document.querySelector(".login header");
+        loginHeader.addEventListener("click", () => {
+          wrapper.classList.add("active");
+        });
+        signupHeader.addEventListener("click", () => {
+          wrapper.classList.remove("active");
+        });
+
+        </script>
+      <script src="/Js/register.js"></script>
+      <script src="/Js/login.js"></script>
+    </section>
+  </body>
+</html>

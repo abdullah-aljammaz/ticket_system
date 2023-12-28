@@ -1,0 +1,122 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+a{  text-decoration: none;}
+
+.ticket-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row-reverse; /* Change this line */
+}
+
+.ticket-card {
+  width: 300px;
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  transition: transform 0.3s;
+  position: relative;
+  display: inline-block;
+
+  flex-direction: column;
+}
+
+.ticket-card:hover {
+  transform: scale(1.05);
+}
+
+.ticket-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.ticket-details {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #3498db;
+}
+
+.ticket-price {
+  font-size: 1.2em;
+  color: #4caf50;
+  margin-bottom: 10px;
+}
+nav {
+  color: white;
+  border-bottom: 1px;
+  border-color: #33333380;
+  border-style: solid;
+  margin: 0%;
+  position: absolute;
+  top: 0;
+  width: 99.4%;
+}
+.location-title {
+  font-size: 1em;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.location-title img{
+  width: 16px;
+  height: 16px;
+}
+a{color: white;}
+.location .location-title{
+  background-color: #121212;
+}
+.book-now-btn {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  background: #125296;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  animation: scaleButton 0.3s linear;
+  margin: auto -11px;
+}
+
+.book-now-btn:hover {
+  background: #2a373e;
+} 
+
+@keyframes scaleButton {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
