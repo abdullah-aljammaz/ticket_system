@@ -1,0 +1,103 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Roles {
+  ADMIN
+  USER
+  SUPER_ADMIN
+}
+
+enum PaymentStatus {
+  pending
+  successful
+  failed
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  firstName String
+  lastName  String
+  phone     String
+  role      Roles     @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  payments  Payment[]
+  tickets   Ticket[]
+  event     Event[]
+}
+
+model Event {
+  id              String     @id @default(uuid())
+  title           String     @unique
+  description     String
+  location        String
+  startDate       DateTime?
+  endDate         DateTime?
+  image           String?
+  avalible_ticket String
+  price           String
+  discount        String?    @default("0")
+  final_price     String
+  discount_end    DateTime?
+  category        Categories
+  admin_id        String
+  isBooked        Boolean    @default(false)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  user            User       @relation(fields: [admin_id], references: [id])
+  tickets         Ticket[]
+
+  @@index([admin_id])
+}
+
+model Ticket {
+  id               String   @id @default(uuid())
+  eventId          String
+  qr_code          String   @default("/img/qrcode.png")
+  event            Event    @relation(fields: [eventId], references: [id])
+  price            String
+  description      String
+  location         String
+  title            String
+  bookedBy         String
+  number_of_guests String   @default("1")
+  bookedUser       User     @relation(fields: [bookedBy], references: [id])
+  bookingDate      DateTime @default(now())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([eventId])
+  @@index([bookedBy])
+}
+
+model Payment {
+  id          String   @id @default(uuid())
+  user_id     String
+  card_name   String
+  card_number String
+  // card_cvv String
+  card_date   String
+  user        User     @relation(fields: [user_id], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  @@index([user_id])
+}
+
+enum Categories {
+  Restaurants
+  Experiences
+  Shows
+  Events
+  Hotels
+  Travels
+}
